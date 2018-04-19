@@ -54,27 +54,5 @@
     
     <script src="plugins/bootstrap/js/jquery-1.10.2.js"></script>
     <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
 </html>
-<script>
-    function entrar(){
-    $.ajax({
-        type:"post",
-        cache:false,
-        url:"AutenticacaoLogin",
-        data:$('#frmLogin').serialize(),
-        beforeSend: function(){
-            
-        },
-        success:function(retorno){
-            $('#dvRetorno').html(retorno);
-            
-            if(retorno === 'OK'){
-                location.href = "app/main.jsp";
-            }
-        },
-        error:function(){
-            alert('erro');
-        }
-    });
-}
-</script>
