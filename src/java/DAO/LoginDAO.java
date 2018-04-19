@@ -10,6 +10,7 @@ import DAO.Conexao;
 import BEAN.Login;
 import com.mysql.jdbc.Statement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -30,14 +31,22 @@ public class LoginDAO {
         String senha = login.getSenha();
         int qtdLinhas;
         
-        String query = "select * from tb_usuario where username = " + "'"+ usuario +"'" +" and senha = " +"'"+ senha +"'";
+        //String query = "select * from tb_usuario where username = " + "'"+ usuario +"'" +" and senha = " +"'"+ senha +"'";
+        String query = "select * from tb_usuario where username = ? and senha = ?";
         //String query = "select * from tb_usuario";
+        
+        PreparedStatement auxSql = null;
+        //Statement stmt = (Statement) con.createStatement();
+        
         try {
-            Statement stmt = (Statement) con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
             
+            auxSql = con.prepareStatement(query);
+            auxSql.setString(1, usuario);
+            auxSql.setString(2, senha);
+            ResultSet rs = auxSql.executeQuery();
             
-            
+            //ResultSet rs = stmt.executeQuery(auxSql);
+    
             rs.last();
             qtdLinhas = rs.getRow();
             
