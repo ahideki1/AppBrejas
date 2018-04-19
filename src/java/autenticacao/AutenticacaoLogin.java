@@ -12,11 +12,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.LoginDAO;
+import BEAN.Login;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author alexandre.yoshimura
  */
-public class AtenticacaoLogin extends HttpServlet {
+public class AutenticacaoLogin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,17 +36,29 @@ public class AtenticacaoLogin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AtenticacaoLogin</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AtenticacaoLogin at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        
+        Login login = new Login();
+        LoginDAO verificar = new LoginDAO();
+        
+        String usuario = request.getParameter("j_username");
+        String senha = request.getParameter("j_password");
+
+        login.setUsuario(usuario);
+        login.setSenha(senha);
+        
+        String retorno = "";
+        try {
+            retorno = verificar.VerificarLogin(login);
+        } catch (SQLException ex) {
+            Logger.getLogger(AutenticacaoLogin.class.getName()).log(Level.SEVERE, null, ex);
+            retorno = "FAIL 2";
+        }
+        
+        
+        if(retorno == "OK"){
+            response.getWriter().write(retorno);
+        }else{
+            response.getWriter().write(retorno);
         }
     }
 
