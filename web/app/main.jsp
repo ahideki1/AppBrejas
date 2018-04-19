@@ -3,6 +3,7 @@
     Created on : 18/04/2018, 17:47:50
     Author     : alexandre.yoshimura
 --%>
+<%@ page session="true" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,5 +14,7 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+        <br>
+        ${sessionScope.sUsuario}
     </body>
 </html>

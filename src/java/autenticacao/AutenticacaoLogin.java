@@ -17,6 +17,7 @@ import BEAN.Login;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -56,6 +57,8 @@ public class AutenticacaoLogin extends HttpServlet {
         
         
         if(retorno == "OK"){
+            HttpSession session = request.getSession();
+            session.setAttribute("sUsuario", usuario);
             response.getWriter().write(retorno);
         }else{
             response.getWriter().write(retorno);

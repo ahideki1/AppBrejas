@@ -67,6 +67,10 @@
         },
         success:function(retorno){
             $('#dvRetorno').html(retorno);
+            
+            if(retorno === 'OK'){
+                location.href = "app/main.jsp";
+            }
         },
         error:function(){
             alert('erro');
