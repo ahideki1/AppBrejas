@@ -4,9 +4,17 @@
         <servlet-name>AutenticacaoLogin</servlet-name>
         <servlet-class>autenticacao.AutenticacaoLogin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Crud</servlet-name>
+        <servlet-class>controller.Crud</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AutenticacaoLogin</servlet-name>
         <url-pattern>/AutenticacaoLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Crud</servlet-name>
+        <url-pattern>/Crud</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

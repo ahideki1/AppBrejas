@@ -16,5 +16,7 @@
         <h1>Hello World!</h1>
         <br>
         ${sessionScope.sUsuario}
+        
+        <a href="templates/config/produtor/cadastroProdutor.jsp">Cadastrar Produtor</a>
     </body>
 </html>

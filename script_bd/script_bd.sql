@@ -18,3 +18,9 @@ create table tb_usuario
 
 insert into tb_usuario(id_user,username,email,senha)
 values('','japa','alexandre.yoshi1@gmail.com','1');
+
+create table tb_produtor
+(
+    id_produtor int primary key AUTO_INCREMENT,
+    no_procutor varchar(100)
+);
