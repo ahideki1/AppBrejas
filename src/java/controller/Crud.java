@@ -43,7 +43,7 @@ public class Crud extends HttpServlet {
         
         String acao = request.getParameter("hdnAction");
         String retorno = "";
-        ArrayList arrayRetorno;
+        ArrayList<GetSetProdutor> arrayRetorno;
 
         switch(acao){
             case "CAD_PRODUTOR":
@@ -61,15 +61,14 @@ public class Crud extends HttpServlet {
             
             case "BUSCA_PRODUTOR":
                 try{
-                    arrayRetorno = funcProDao.BuscarProdutor();
-                    //request.setAttribute("ListaProdutor", arrayRetorno);
-                    //request.getRequestDispatcher("/retornaDados.jsp").forward(request, response);
-                     response.getWriter().println(arrayRetorno);
+                    retorno = funcProDao.GeraJsonProdutor();
+                    response.getWriter().println(retorno);
                 }catch(SQLException e){
                     retorno = "Falha ao buscar produtor 2"; 
                 }
 
                 break;
+                
             default:
             response.getWriter().println("Ação incorreta");
         }
