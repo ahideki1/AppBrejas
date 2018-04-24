@@ -3,9 +3,12 @@
     Created on : 20/04/2018, 11:28:20
     Author     : alexandre.yoshimura
 --%>
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.Random" %>
+<%
+Random rand = new Random();
+int n = rand.nextInt(90000) + 10000;
+%>
 <!DOCTYPE html>
 <html>
     <head>
